@@ -15,7 +15,7 @@ db="$(ff_profile_dir)/places.sqlite"
 
 list_history() {
   sqlite3 "file:$db?immutable=1" "
-    SELECT date(v.visit_date/1000000, 'unixepoch')
+    SELECT datetime(v.visit_date/1000000, 'unixepoch', 'localtime')
       || ' ' || p.url
     FROM moz_places p
     JOIN moz_historyvisits v ON p.id = v.place_id
