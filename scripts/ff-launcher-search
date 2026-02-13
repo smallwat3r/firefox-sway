@@ -3,6 +3,7 @@
 # ff-launcher-search - Quick Firefox search
 #
 # Type a query and open it as a Firefox search.
+# If the input looks like a URL or domain, open it directly.
 # Uses fzf as a simple input prompt (Escape to close).
 #
 # Dependencies: fzf
@@ -22,7 +23,23 @@ set -e
 
 [[ -n "$query" ]] || exit 0
 
-encoded="${query// /+}"
-setsid firefox \
-  "https://www.google.com/search?q=$encoded" \
-  >/dev/null 2>&1
+is_url() {
+  local q="$1"
+  # Explicit scheme (http://, https://, ftp://)
+  [[ "$q" =~ ^https?:// || "$q" =~ ^ftp:// ]] && return 0
+  # Bare domain: no spaces, contains a dot, TLD is 2+ alpha chars
+  [[ "$q" != *" "* && "$q" == *.* \
+    && "$q" =~ \.[a-zA-Z]{2,}(/.*)?$ ]] && return 0
+  return 1
+}
+
+if is_url "$query"; then
+  url="$query"
+  [[ "$url" =~ ^https?:// || "$url" =~ ^ftp:// ]] \
+    || url="https://$url"
+else
+  encoded="${query// /+}"
+  url="https://www.google.com/search?q=$encoded"
+fi
+
+setsid firefox "$url" >/dev/null 2>&1
