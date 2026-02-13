@@ -39,4 +39,4 @@ list_history() {
 }
 
 target="$(list_history | fzf --reverse)" || exit 0
-setsid gio open "${target#* }" >/dev/null 2>&1
+setsid firefox "${target#* }" >/dev/null 2>&1
