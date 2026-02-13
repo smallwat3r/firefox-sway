@@ -101,4 +101,8 @@ set $launcher footclient \
 
 bindsym $mod+o exec $launcher -w 9999x400 launcher-history
 bindsym $mod+u exec $launcher -w 9999x400 launcher-bookmarks
+
+# Assign Firefox to its own workspace with tabbed layout.
+assign [app_id="firefox"] workspace number 10
+for_window [app_id="firefox"] layout tabbed, urgent enable
 ```
