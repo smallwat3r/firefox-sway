@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+#
+# ff-launcher-search - Quick Firefox search
+#
+# Type a query and open it as a Firefox search.
+# Uses fzf as a simple input prompt (Escape to close).
+#
+# Dependencies: fzf
+#
+. "$(dirname "$(readlink -f "$0")")/ff-launcher-lib.sh"
+
+require fzf
+
+set +e
+query="$(fzf "${FZF_OPTS[@]}" \
+  --no-info --print-query \
+  --prompt='search: ' < /dev/null)"
+rc=$?
+set -e
+# fzf exit 130 = Escape/Ctrl-C
+[[ $rc -eq 130 ]] && exit 0
+
+[[ -n "$query" ]] || exit 0
+
+encoded="${query// /+}"
+setsid firefox \
+  "https://www.google.com/search?q=$encoded" \
+  >/dev/null 2>&1

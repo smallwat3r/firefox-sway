@@ -33,10 +33,12 @@ install:
 	    "extension from AMO."; \
 	fi
 	mkdir -p "$(BIN_DIR)"
-	ln -sfv "$(SRC_DIR)scripts/launcher-bookmarks" \
-	  "$(BIN_DIR)/launcher-bookmarks"
-	ln -sfv "$(SRC_DIR)scripts/launcher-history" \
-	  "$(BIN_DIR)/launcher-history"
+	ln -sfv "$(SRC_DIR)scripts/ff-launcher-bookmarks" \
+	  "$(BIN_DIR)/ff-launcher-bookmarks"
+	ln -sfv "$(SRC_DIR)scripts/ff-launcher-history" \
+	  "$(BIN_DIR)/ff-launcher-history"
+	ln -sfv "$(SRC_DIR)scripts/ff-launcher-search" \
+	  "$(BIN_DIR)/ff-launcher-search"
 	@echo ""
 	@echo "Done. Restart Firefox to apply changes."
 
@@ -46,8 +48,9 @@ uninstall:
 	rm -fv "$(PROFILE_DIR)/chrome/userChrome.css"
 	rm -fv "$(PROFILE_DIR)/user.js"
 	rm -fv "$(PROFILE_DIR)/extensions/$(EXT_ID).xpi"
-	rm -fv "$(BIN_DIR)/launcher-bookmarks"
-	rm -fv "$(BIN_DIR)/launcher-history"
+	rm -fv "$(BIN_DIR)/ff-launcher-bookmarks"
+	rm -fv "$(BIN_DIR)/ff-launcher-history"
+	rm -fv "$(BIN_DIR)/ff-launcher-search"
 	@echo "Removed."
 
 sign:

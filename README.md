@@ -20,7 +20,7 @@ This is my personal setup. It should be safe for anyone to use, but
   tab created in a multi-tab window into its own window,
   so it is managed by the WM
 - Provides fzf-based launchers for bookmarks and history
-  (`scripts/launcher-bookmarks`, `scripts/launcher-history`)
+  (`scripts/ff-launcher-bookmarks`, `scripts/ff-launcher-history`)
 
 ## Install
 
@@ -57,10 +57,9 @@ Restart Firefox after uninstalling.
 
 ## Launchers
 
-`make install` symlinks `launcher-bookmarks` and
-`launcher-history` into `~/.local/bin`. These are fzf-based
-scripts that read your Firefox profile's `places.sqlite` database.
-They require `fzf` and `sqlite3`.
+`make install` symlinks `ff-launcher-bookmarks`,
+`ff-launcher-history`, and `ff-launcher-search` into `~/.local/bin`.
+Bookmarks and history require `fzf` and `sqlite3`.
 
 To use them as popup launchers in sway with foot, create a
 foot config for the launcher UI (font, colors, etc.):
@@ -99,8 +98,9 @@ set $launcher footclient \
   -s $XDG_RUNTIME_DIR/foot-launcher.sock \
   --title=launcher
 
-bindsym $mod+o exec $launcher -w 9999x400 launcher-history
-bindsym $mod+u exec $launcher -w 9999x400 launcher-bookmarks
+bindsym $mod+o exec $launcher -w 9999x400 ff-launcher-history
+bindsym $mod+u exec $launcher -w 9999x400 ff-launcher-bookmarks
+bindsym $mod+s exec $launcher -w 9999x1 ff-launcher-search
 
 # Assign Firefox to its own workspace with tabbed layout.
 assign [app_id="firefox"] workspace number 10

@@ -1,32 +1,18 @@
 #!/usr/bin/env bash
 #
-# launcher-bookmarks - Browse Firefox bookmarks
+# ff-launcher-bookmarks - Browse Firefox bookmarks
 #
 # Interactively select a bookmark and open it. Bookmarks are
 # displayed with their folder path for context, URLs are
 # hidden from search.
 #
-# Dependencies:
-#   - fzf: Fuzzy finder
-#   - sqlite3: For reading bookmarks database
+# Dependencies: fzf, sqlite3
 #
-set -euo pipefail
+. "$(dirname "$(readlink -f "$0")")/ff-launcher-lib.sh"
 
-die() { echo "$1" >&2; exit 1; }
+require fzf sqlite3
 
-command -v fzf >/dev/null || die "fzf is required"
-command -v sqlite3 >/dev/null || die "sqlite3 is required"
-
-ff_dir="$HOME/.mozilla/firefox"
-[[ -f "$ff_dir/profiles.ini" ]] \
-  || die "Firefox profiles.ini not found"
-
-ff_profile=$(awk -F= '
-  /^\[Install/ { f=1 }
-  f && /^Default=/ { print $2; exit }
-' "$ff_dir/profiles.ini")
-
-db="$ff_dir/$ff_profile/places.sqlite"
+db="$(ff_profile_dir)/places.sqlite"
 [[ -f "$db" ]] || die "Bookmarks database not found"
 
 list_bookmarks() {
@@ -51,7 +37,8 @@ list_bookmarks() {
 }
 
 target="$(list_bookmarks \
-  | fzf --reverse --delimiter=$'\t' --with-nth=2..)" \
+  | fzf "${FZF_OPTS[@]}" \
+    --delimiter=$'\t' --with-nth=2..)" \
   || exit 0
 url="$(printf '%s' "$target" | cut -f1)"
 setsid firefox "$url" >/dev/null 2>&1

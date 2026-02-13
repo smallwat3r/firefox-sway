@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+#
+# ff-launcher-history - Browse Firefox history
+#
+# Interactively select a URL from Firefox history and open it.
+#
+# Dependencies: fzf, sqlite3
+#
+. "$(dirname "$(readlink -f "$0")")/ff-launcher-lib.sh"
+
+require fzf sqlite3
+
+db="$(ff_profile_dir)/places.sqlite"
+[[ -f "$db" ]] || die "History database not found"
+
+list_history() {
+  sqlite3 "file:$db?immutable=1" "
+    SELECT date(v.visit_date/1000000, 'unixepoch')
+      || ' ' || p.url
+    FROM moz_places p
+    JOIN moz_historyvisits v ON p.id = v.place_id
+    ORDER BY v.visit_date DESC
+    LIMIT 100000
+  "
+}
+
+target="$(list_history | fzf "${FZF_OPTS[@]}")" \
+  || exit 0
+setsid firefox "${target#* }" >/dev/null 2>&1
