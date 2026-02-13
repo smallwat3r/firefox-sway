@@ -1,6 +1,6 @@
 # firefox-wm
 
-Make Firefox behave like a tiling window manager client.
+Minimal Firefox configuration for tiling window managers.
 
 The default Firefox tab bar wastes vertical space when a tiling WM
 like sway already manages windows. This repo removes the tab bar
