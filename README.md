@@ -62,14 +62,24 @@ Restart Firefox after uninstalling.
 scripts that read your Firefox profile's `places.sqlite` database.
 They require `fzf` and `sqlite3`.
 
-To use them as popup launchers in sway with foot, start a
-foot server with a dedicated config:
+To use them as popup launchers in sway with foot, create a
+foot config for the launcher UI (font, colors, etc.):
 
 ```ini
 # ~/.config/foot/launcher.ini
+[main]
+font = MonacoB:size=10, Twemoji:size=10
+
 [cursor]
 style = beam
+
+[colors]
+foreground = bbbbbb
+background = 222222
 ```
+
+Then add the following to your sway config to start the foot
+server, float launcher windows, and bind the keys:
 
 ```
 # ~/.config/sway/config
