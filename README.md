@@ -20,9 +20,10 @@ This is my personal setup. It should be safe for anyone to use, but
 
 - Hides the tab bar and bookmark bar with `userChrome.css`
 - Opens new tabs as windows via Firefox preferences (`user.js`)
-- Installs an extension (Tabs to Windows) that moves any
-  tab created in a multi-tab window into its own window,
-  so it is managed by the WM
+- Installs an extension (Tabs to Windows, source in
+  `extensions/tabs-to-windows/`) that moves any tab created
+  in a multi-tab window into its own window, so it is
+  managed by the WM
 - Provides fzf-based launchers for bookmarks, history,
   and search
 
