@@ -9,15 +9,16 @@ sway (or any tiling WM) can handle layout, stacking, and switching
 natively.
 
 This is my personal setup. It should be safe for anyone to use, but
-**back up your Firefox profile first** - it overwrites `user.js` and
+**back up your Firefox profile first** as it overwrites `user.js` and
 `userChrome.css` via symlinks.
 
 ## What it does
 
-- **Hides the tab bar** with a `userChrome.css` rule
-- **Opens new tabs as windows** via Firefox preferences (`user.js`)
-- **Installs an extension** (Tabs to Windows) that moves any
-  tab created in a multi-tab window into its own window
+- Hides the tab bar with a `userChrome.css` rule
+- Opens new tabs as windows via Firefox preferences (`user.js`)
+- Installs an extension (Tabs to Windows) that moves any
+  tab created in a multi-tab window into its own window,
+  so it is managed by the WM
 
 ## Install
 
