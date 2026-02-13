@@ -12,3 +12,11 @@ user_pref(
   "toolkit.legacyUserProfileCustomizations.stylesheets",
   true
 );
+
+// Disable unused tab features (tabs are converted to windows
+// by the tabs-to-windows extension).
+user_pref("browser.tabs.animate", false);
+user_pref("browser.tabs.warnOnClose", false);
+user_pref("browser.tabs.warnOnCloseOtherTabs", false);
+user_pref("browser.tabs.crashReporting.sendReport", false);
+user_pref("browser.sessionstore.resume_from_crash", false);
