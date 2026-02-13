@@ -1,0 +1,9 @@
+/* Hide tab bar, let sway manage windows as tabs */
+#TabsToolbar {
+  visibility: collapse !important;
+}
+
+/* Hide bookmark bar, use an external launcher instead */
+#PersonalToolbar {
+  visibility: collapse !important;
+}

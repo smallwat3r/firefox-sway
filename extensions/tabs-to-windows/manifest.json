@@ -1,0 +1,15 @@
+{
+  "manifest_version": 2,
+  "name": "Tabs to Windows",
+  "version": "1.1",
+  "description": "Opens every new tab as a new window for tiling WM integration.",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{ad9d4d3f-e4f3-4736-9dee-a3be62270429}"
+    }
+  },
+  "permissions": ["tabs"],
+  "background": {
+    "scripts": ["background.js"]
+  }
+}
