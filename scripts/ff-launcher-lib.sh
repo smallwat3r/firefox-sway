@@ -24,7 +24,12 @@ ff_profile_dir() {
   echo "$ff_dir/$profile"
 }
 
-# FZF colors and base options.
+# FZF keybindings, colors, and base options.
+FZF_BIND="ctrl-left:backward-word"
+FZF_BIND+=",ctrl-right:forward-word"
+FZF_BIND+=",ctrl-bs:backward-kill-word"
+FZF_BIND+=",home:first,end:last"
+
 FZF_COLORS="bg:#222222,fg:#bbbbbb"
 FZF_COLORS+=",bg+:#005577,fg+:#eeeeee"
 FZF_COLORS+=",hl:#eeeeee,hl+:#eeeeee"
@@ -37,4 +42,5 @@ FZF_OPTS=(
   --no-separator --no-scrollbar
   --info=inline-right
   --color="$FZF_COLORS"
+  --bind="$FZF_BIND"
 )
