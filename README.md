@@ -62,6 +62,18 @@ Restart Firefox after uninstalling.
 All three require `fzf`. Bookmarks and history also
 require `sqlite3`.
 
+`ff-launcher-history` - browse and open URLs from Firefox history:
+
+![history](images/history.png)
+
+`ff-launcher-bookmarks` - browse and open Firefox bookmarks:
+
+![bookmarks](images/bookmark.png)
+
+`ff-launcher-search` - quick search from a prompt:
+
+![search](images/search.png)
+
 To use them as popup launchers in sway with foot, create a
 foot config for the launcher UI (font, colors, etc.):
 
