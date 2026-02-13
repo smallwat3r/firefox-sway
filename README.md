@@ -28,17 +28,18 @@ make install
 This symlinks `userChrome.css` and `user.js` into your default
 Firefox profile and, optionally, downloads the extension from AMO.
 
-The extension is unlisted on AMO, so the automatic download only
-works with the author's credentials. To sign and install it
-yourself, create an AMO account at
-https://addons.mozilla.org/developers/ and generate API keys, then:
+The extension is unlisted on AMO. To sign it under your own
+account (one-off), create an AMO account at
+https://addons.mozilla.org/developers/, generate API keys, then:
 
 ```
 export WEB_EXT_API_KEY=...
 export WEB_EXT_API_SECRET=...
 make sign
-make install
 ```
+
+Once signed, `make install` will download and install the
+extension using the same API keys.
 
 Restart Firefox after installing.
 

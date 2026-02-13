@@ -43,4 +43,4 @@ uninstall:
 	@echo "Removed."
 
 sign:
-	cd "$(EXT_DIR)" && web-ext sign
+	cd "$(EXT_DIR)" && web-ext sign --channel unlisted
