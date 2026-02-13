@@ -12,7 +12,11 @@ This works well if you prefer keeping few windows open at a time
 and rely on launchers to quickly jump back to bookmarks or history
 rather than hoarding tabs.
 
-![Stripped-down Firefox UI, no tabs, only the URL bar](images/firefox.png)
+Everything non-essential has been removed from the UI to
+maximize screen space for content. No tab bar, no bookmark
+bar, just the URL bar.
+
+![Stripped-down Firefox UI](images/firefox.png)
 
 This is my personal setup. It should be safe for anyone to use, but
 **back up your Firefox profile first** as it overwrites `user.js` and
