@@ -7,3 +7,94 @@
 #PersonalToolbar {
   visibility: collapse !important;
 }
+
+/* Strip the navbar to just the URL bar */
+#reload-button,
+#stop-button,
+#home-button,
+#library-button,
+#unified-extensions-button,
+#PanelUI-button,
+#tracking-protection-icon-container,
+#identity-icon-box,
+#reader-mode-button,
+#sidebar-button {
+  display: none !important;
+}
+
+/* Slim down the navbar */
+#nav-bar {
+  padding: 0 !important;
+  margin: 0 !important;
+  min-height: 0 !important;
+}
+
+/* Scale down all toolbar buttons and icons */
+#nav-bar .toolbarbutton-1,
+#nav-bar .webextension-browser-action {
+  padding: 0 2px !important;
+  margin: 0 !important;
+}
+
+#nav-bar .toolbarbutton-1 .toolbarbutton-icon,
+#nav-bar .webextension-browser-action .toolbarbutton-icon,
+#nav-bar .toolbarbutton-badge-stack {
+  width: 14px !important;
+  height: 14px !important;
+  padding: 0 !important;
+}
+
+#fxa-toolbar-menu-button {
+  transform: scale(0.85) !important;
+  transform-origin: center center !important;
+}
+
+/* Remove spacers between nav buttons and URL bar */
+#nav-bar toolbarspring,
+#nav-bar toolbarspacer {
+  display: none !important;
+}
+
+#urlbar-container {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+#urlbar {
+  --urlbar-toolbar-height: 12px !important;
+  min-height: 12px !important;
+  font-size: 13px !important;
+  text-align: left !important;
+  padding-block: 0 !important;
+}
+
+#urlbar,
+#urlbar *,
+#urlbar-background,
+#urlbar-input-container,
+#urlbar[open] > .urlbarView,
+#urlbar[open] > .urlbarView > .urlbarView-body-outer {
+  border-radius: 0 !important;
+}
+
+#urlbar-input {
+  text-align: left !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+#urlbar-input-container {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+#urlbar-background {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Scale down icons inside the URL bar */
+#page-action-buttons {
+  transform: scale(0.65) !important;
+  transform-origin: right center !important;
+}
