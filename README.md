@@ -8,6 +8,10 @@ entirely and forces every new tab to open as a separate window, so
 sway (or any tiling WM) can handle layout, stacking, and switching
 natively.
 
+This works well if you prefer keeping few windows open at a time
+and rely on launchers to quickly jump back to bookmarks or history
+rather than hoarding tabs.
+
 This is my personal setup. It should be safe for anyone to use, but
 **back up your Firefox profile first** as it overwrites `user.js` and
 `userChrome.css` via symlinks.
