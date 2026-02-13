@@ -19,8 +19,8 @@ This is my personal setup. It should be safe for anyone to use, but
 - Installs an extension (Tabs to Windows) that moves any
   tab created in a multi-tab window into its own window,
   so it is managed by the WM
-- Provides fzf-based launchers for bookmarks and history
-  (`scripts/ff-launcher-bookmarks`, `scripts/ff-launcher-history`)
+- Provides fzf-based launchers for bookmarks, history,
+  and search
 
 ## Install
 
@@ -59,7 +59,8 @@ Restart Firefox after uninstalling.
 
 `make install` symlinks `ff-launcher-bookmarks`,
 `ff-launcher-history`, and `ff-launcher-search` into `~/.local/bin`.
-Bookmarks and history require `fzf` and `sqlite3`.
+All three require `fzf`. Bookmarks and history also
+require `sqlite3`.
 
 To use them as popup launchers in sway with foot, create a
 foot config for the launcher UI (font, colors, etc.):
