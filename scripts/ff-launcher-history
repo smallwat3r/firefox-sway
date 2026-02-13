@@ -26,4 +26,6 @@ list_history() {
 
 target="$(list_history | fzf "${FZF_OPTS[@]}")" \
   || exit 0
-setsid firefox "${target#* }" >/dev/null 2>&1
+url="${target#* }"
+url="${url#* }"
+setsid firefox "$url" >/dev/null 2>&1
