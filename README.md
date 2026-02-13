@@ -100,7 +100,7 @@ set $launcher footclient \
   --title=launcher
 
 bindsym $mod+o exec $launcher -w 9999x400 ff-launcher-history
-bindsym $mod+u exec $launcher -w 9999x400 ff-launcher-bookmarks
+bindsym $mod+u exec $launcher -w 9999x200 ff-launcher-bookmarks
 bindsym $mod+s exec $launcher -w 9999x1 ff-launcher-search
 
 # Assign Firefox to its own workspace with tabbed layout.
