@@ -34,20 +34,13 @@ def make_jwt(key: str, secret: str) -> str:
     header = b64url(json.dumps({"alg": "HS256", "typ": "JWT"}).encode())
     payload = b64url(json.dumps({"iss": key, "iat": now, "exp": now + 300}).encode())
     signing_input = f"{header}.{payload}"
-    sig = hmac.new(
-        secret.encode(),
-        signing_input.encode(),
-        hashlib.sha256,
-    ).digest()
+    sig = hmac.new(secret.encode(), signing_input.encode(), hashlib.sha256).digest()
     return f"{signing_input}.{b64url(sig)}"
 
 
 def api_get(url: str, token: str) -> dict:
     """GET a JSON resource from the AMO API."""
-    req = urllib.request.Request(
-        url,
-        headers={"Authorization": f"JWT {token}"},
-    )
+    req = urllib.request.Request(url, headers={"Authorization": f"JWT {token}"})
     try:
         with urllib.request.urlopen(req, timeout=TIMEOUT) as resp:
             return json.loads(resp.read())
@@ -62,13 +55,9 @@ def api_get(url: str, token: str) -> dict:
 
 def download(url: str, token: str, dest: str) -> None:
     """Download a file, streaming to *dest*."""
-    req = urllib.request.Request(
-        url,
-        headers={"Authorization": f"JWT {token}"},
-    )
+    req = urllib.request.Request(url, headers={"Authorization": f"JWT {token}"})
     try:
-        with urllib.request.urlopen(req, timeout=TIMEOUT) as resp, \
-             open(dest, "wb") as fp:
+        with urllib.request.urlopen(req, timeout=TIMEOUT) as resp, open(dest, "wb") as fp:
             while chunk := resp.read(1 << 16):
                 fp.write(chunk)
     except urllib.error.HTTPError as exc:
@@ -82,8 +71,7 @@ def download(url: str, token: str, dest: str) -> None:
 def main() -> None:
     if len(sys.argv) != 3:
         print(
-            "Usage: fetch-amo-xpi.py"
-            " <addon-slug> <output-path>",
+            "Usage: fetch-amo-xpi.py" " <addon-slug> <output-path>",
             file=sys.stderr,
         )
         raise SystemExit(2)
@@ -94,18 +82,14 @@ def main() -> None:
     secret = os.environ.get("WEB_EXT_API_SECRET", "")
     if not key or not secret:
         print(
-            "WEB_EXT_API_KEY and WEB_EXT_API_SECRET"
-            " must be set",
+            "WEB_EXT_API_KEY and WEB_EXT_API_SECRET" " must be set",
             file=sys.stderr,
         )
         raise SystemExit(1)
 
     token = make_jwt(key, secret)
 
-    versions_url = (
-        f"{AMO_API}/addons/addon/{slug}"
-        f"/versions/?filter=all_with_unlisted"
-    )
+    versions_url = f"{AMO_API}/addons/addon/{slug}/versions/?filter=all_with_unlisted"
     data = api_get(versions_url, token)
 
     results = data.get("results")
@@ -120,7 +104,6 @@ def main() -> None:
 
     download(xpi_url, token, output)
     print("Extension installed.")
-
 
 if __name__ == "__main__":
     main()
