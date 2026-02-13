@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+#
+# launcher-history - Browse Firefox history
+#
+# Interactively select a URL from Firefox history and open it.
+#
+# Dependencies:
+#   - fzf: Fuzzy finder
+#   - sqlite3: For reading history database
+#
+set -euo pipefail
+
+die() { echo "$1" >&2; exit 1; }
+
+command -v fzf >/dev/null || die "fzf is required"
+command -v sqlite3 >/dev/null || die "sqlite3 is required"
+
+ff_dir="$HOME/.mozilla/firefox"
+[[ -f "$ff_dir/profiles.ini" ]] \
+  || die "Firefox profiles.ini not found"
+
+ff_profile=$(awk -F= '
+  /^\[Install/ { f=1 }
+  f && /^Default=/ { print $2; exit }
+' "$ff_dir/profiles.ini")
+
+db="$ff_dir/$ff_profile/places.sqlite"
+[[ -f "$db" ]] || die "History database not found"
+
+list_history() {
+  sqlite3 "file:$db?immutable=1" "
+    SELECT date(v.visit_date/1000000, 'unixepoch')
+      || ' ' || p.url
+    FROM moz_places p
+    JOIN moz_historyvisits v ON p.id = v.place_id
+    ORDER BY v.visit_date DESC
+    LIMIT 100000
+  "
+}
+
+target="$(list_history | fzf --reverse)" || exit 0
+setsid gio open "${target#* }" >/dev/null 2>&1

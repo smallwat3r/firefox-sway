@@ -3,6 +3,7 @@ SRC_DIR     := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 EXT_DIR     := $(SRC_DIR)extensions/tabs-to-windows
 EXT_ID      := {ad9d4d3f-e4f3-4736-9dee-a3be62270429}
 AMO_SLUG    := 6164e14e709b4ee5a368
+BIN_DIR     := $(HOME)/.local/bin
 
 # Extract the default profile from the first [Install*] section.
 PROFILE_DIR := $(FIREFOX_DIR)/$(shell awk -F= ' \
@@ -31,6 +32,11 @@ install:
 	    "WEB_EXT_API_SECRET to install the" \
 	    "extension from AMO."; \
 	fi
+	mkdir -p "$(BIN_DIR)"
+	ln -sfv "$(SRC_DIR)scripts/launcher-bookmarks" \
+	  "$(BIN_DIR)/launcher-bookmarks"
+	ln -sfv "$(SRC_DIR)scripts/launcher-history" \
+	  "$(BIN_DIR)/launcher-history"
 	@echo ""
 	@echo "Done. Restart Firefox to apply changes."
 
@@ -40,6 +46,8 @@ uninstall:
 	rm -fv "$(PROFILE_DIR)/chrome/userChrome.css"
 	rm -fv "$(PROFILE_DIR)/user.js"
 	rm -fv "$(PROFILE_DIR)/extensions/$(EXT_ID).xpi"
+	rm -fv "$(BIN_DIR)/launcher-bookmarks"
+	rm -fv "$(BIN_DIR)/launcher-history"
 	@echo "Removed."
 
 sign:

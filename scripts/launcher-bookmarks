@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+#
+# launcher-bookmarks - Browse Firefox bookmarks
+#
+# Interactively select a bookmark and open it. Bookmarks are
+# displayed with their folder path for context, URLs are
+# hidden from search.
+#
+# Dependencies:
+#   - fzf: Fuzzy finder
+#   - sqlite3: For reading bookmarks database
+#
+set -euo pipefail
+
+die() { echo "$1" >&2; exit 1; }
+
+command -v fzf >/dev/null || die "fzf is required"
+command -v sqlite3 >/dev/null || die "sqlite3 is required"
+
+ff_dir="$HOME/.mozilla/firefox"
+[[ -f "$ff_dir/profiles.ini" ]] \
+  || die "Firefox profiles.ini not found"
+
+ff_profile=$(awk -F= '
+  /^\[Install/ { f=1 }
+  f && /^Default=/ { print $2; exit }
+' "$ff_dir/profiles.ini")
+
+db="$ff_dir/$ff_profile/places.sqlite"
+[[ -f "$db" ]] || die "Bookmarks database not found"
+
+list_bookmarks() {
+  sqlite3 "file:$db?immutable=1" "
+    WITH RECURSIVE paths(id, path) AS (
+      SELECT id, title FROM moz_bookmarks
+      WHERE parent = 1 AND type = 2
+      UNION ALL
+      SELECT b.id, paths.path || '/' || b.title
+      FROM moz_bookmarks b
+      JOIN paths ON b.parent = paths.id
+      WHERE b.type = 2
+    )
+    SELECT p.url || char(9)
+      || COALESCE(pa.path || '/', '') || b.title
+    FROM moz_bookmarks b
+    JOIN moz_places p ON b.fk = p.id
+    LEFT JOIN paths pa ON b.parent = pa.id
+    WHERE b.type = 1
+      AND p.url NOT LIKE 'place:%'
+  "
+}
+
+target="$(list_bookmarks \
+  | fzf --reverse --delimiter=$'\t' --with-nth=2..)" \
+  || exit 0
+url="$(printf '%s' "$target" | cut -f1)"
+setsid gio open "$url" >/dev/null 2>&1

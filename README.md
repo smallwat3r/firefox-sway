@@ -1,4 +1,4 @@
-# firefox-wm
+# firefox-sway
 
 Minimal Firefox configuration for tiling window managers.
 
@@ -14,11 +14,13 @@ This is my personal setup. It should be safe for anyone to use, but
 
 ## What it does
 
-- Hides the tab bar with a `userChrome.css` rule
+- Hides the tab bar and bookmark bar with `userChrome.css`
 - Opens new tabs as windows via Firefox preferences (`user.js`)
 - Installs an extension (Tabs to Windows) that moves any
   tab created in a multi-tab window into its own window,
   so it is managed by the WM
+- Provides fzf-based launchers for bookmarks and history
+  (`scripts/launcher-bookmarks`, `scripts/launcher-history`)
 
 ## Install
 
@@ -52,3 +54,41 @@ make uninstall
 
 Removes the symlinks and the extension XPI from your profile.
 Restart Firefox after uninstalling.
+
+## Launchers
+
+`make install` symlinks `launcher-bookmarks` and
+`launcher-history` into `~/.local/bin`. These are fzf-based
+scripts that read your Firefox profile's `places.sqlite` database.
+They require `fzf` and `sqlite3`.
+
+To use them as popup launchers in sway with foot, start a
+foot server with a dedicated config:
+
+```ini
+# ~/.config/foot/launcher.ini
+[cursor]
+style = beam
+```
+
+```
+# ~/.config/sway/config
+exec foot \
+  --server=$XDG_RUNTIME_DIR/foot-launcher.sock \
+  --config=$HOME/.config/foot/launcher.ini
+
+for_window [title="^launcher$"] \
+  floating enable, \
+  border pixel 1, \
+  sticky enable, \
+  move to output current, \
+  move position 0 0, \
+  focus
+
+set $launcher footclient \
+  -s $XDG_RUNTIME_DIR/foot-launcher.sock \
+  --title=launcher
+
+bindsym $mod+o exec $launcher -w 9999x400 launcher-history
+bindsym $mod+u exec $launcher -w 9999x400 launcher-bookmarks
+```
