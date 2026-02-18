@@ -21,6 +21,9 @@ user_pref("browser.tabs.warnOnCloseOtherTabs", false);
 user_pref("browser.tabs.crashReporting.sendReport", false);
 user_pref("browser.sessionstore.resume_from_crash", false);
 
+// Always show the download button
+user_pref("browser.download.autohideButton", false);
+
 // Disable sidebar
 user_pref("sidebar.revamp", false);
 user_pref("sidebar.verticalTabs", false);
