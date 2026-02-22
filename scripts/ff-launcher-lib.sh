@@ -38,7 +38,7 @@ FZF_COLORS+=",info:#eeeeee,gutter:#222222"
 
 FZF_OPTS=(
   --reverse --wrap --tiebreak=index
-  --pointer='' --highlight-line
+  --pointer='' --prompt='' --highlight-line
   --no-separator --no-scrollbar
   --info=inline-right
   --color="$FZF_COLORS"
