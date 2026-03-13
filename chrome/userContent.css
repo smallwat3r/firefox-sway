@@ -117,7 +117,16 @@
         font-weight: 600;
     }
     code, code *, pre, pre *,
-    kbd, samp, tt {
+    kbd, samp, tt,
+    .line_content, .line_content *,
+    .diff-line-num,
+    .blob-content, .blob-content *,
+    .file-content, .file-content *,
+    .gl-font-monospace,
+    .ref-name,
+    .markdown-area,
+    .ProseMirror code,
+    .cm-editor, .cm-editor * {
         font-family: 'ocrab' !important;
     }
 }
