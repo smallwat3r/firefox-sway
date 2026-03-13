@@ -19,6 +19,8 @@ install:
 	mkdir -p "$(PROFILE_DIR)/chrome"
 	ln -sfv "$(SRC_DIR)chrome/userChrome.css" \
 	  "$(PROFILE_DIR)/chrome/userChrome.css"
+	ln -sfv "$(SRC_DIR)chrome/userContent.css" \
+	  "$(PROFILE_DIR)/chrome/userContent.css"
 	ln -sfv "$(SRC_DIR)user.js" "$(PROFILE_DIR)/user.js"
 	@mkdir -p "$(PROFILE_DIR)/extensions"
 	@if [ -n "$$WEB_EXT_API_KEY" ] && \
@@ -46,6 +48,7 @@ uninstall:
 	@[ -d "$(PROFILE_DIR)" ] || \
 	  { echo "No default profile found" >&2; exit 1; }
 	rm -fv "$(PROFILE_DIR)/chrome/userChrome.css"
+	rm -fv "$(PROFILE_DIR)/chrome/userContent.css"
 	rm -fv "$(PROFILE_DIR)/user.js"
 	rm -fv "$(PROFILE_DIR)/extensions/$(EXT_ID).xpi"
 	rm -fv "$(BIN_DIR)/ff-launcher-bookmarks"

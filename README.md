@@ -25,6 +25,8 @@ This is my personal setup. It should be safe for anyone to use, but
 ## What it does
 
 - Hides the tab bar and bookmark bar with `userChrome.css`
+- Overrides common monospace fonts with a custom font
+  (`ocrab`) via `userContent.css`
 - Opens new tabs as windows via Firefox preferences (`user.js`)
 - Installs an extension (Tabs to Windows, source in
   `extensions/tabs-to-windows/`) that moves any tab created
@@ -39,8 +41,9 @@ This is my personal setup. It should be safe for anyone to use, but
 make install
 ```
 
-This symlinks `userChrome.css` and `user.js` into your default
-Firefox profile and, optionally, downloads the extension from AMO.
+This symlinks `userChrome.css`, `userContent.css`, and `user.js`
+into your default Firefox profile and, optionally, downloads the
+extension from AMO.
 
 The extension is unlisted on AMO. To sign it under your own
 account (one-off), create an AMO account at

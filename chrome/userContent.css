@@ -1,0 +1,45 @@
+@-moz-document url-prefix("http"), url-prefix("https") {
+    @font-face {
+        font-family: 'SFMono-Regular';
+        src: local('ocrab');
+    }
+    @font-face {
+        font-family: 'Cousine';
+        src: local('ocrab');
+    }
+    @font-face {
+        font-family: 'Menlo';
+        src: local('ocrab');
+    }
+    @font-face {
+        font-family: 'Consolas';
+        src: local('ocrab');
+    }
+    @font-face {
+        font-family: 'Cascadia Mono';
+        src: local('ocrab');
+    }
+    @font-face {
+        font-family: 'JetBrains Mono';
+        src: local('ocrab');
+    }
+    @font-face {
+        font-family: 'Monospace';
+        src: local('ocrab');
+    }
+    @font-face {
+        font-family: 'Gitlab Mono';
+        src: local('ocrab');
+    }
+    @font-face {
+        font-family: 'Gitlab Mono';
+        src: local('ocrab');
+        font-weight: 600;
+    }
+    .hljs-comment {
+        font-style: normal !important;
+    }
+    .c1 {
+        font-style: normal !important;
+    }
+}
