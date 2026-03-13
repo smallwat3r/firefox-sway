@@ -1,119 +1,119 @@
 @-moz-document url-prefix("http"), url-prefix("https") {
     @font-face {
         font-family: 'SFMono-Regular';
-        src: local('ocrab');
+        src: local('Ocrab Nerd Font Mono');
     }
     @font-face {
         font-family: 'Cousine';
-        src: local('ocrab');
+        src: local('Ocrab Nerd Font Mono');
     }
     @font-face {
         font-family: 'Menlo';
-        src: local('ocrab');
+        src: local('Ocrab Nerd Font Mono');
     }
     @font-face {
         font-family: 'Consolas';
-        src: local('ocrab');
+        src: local('Ocrab Nerd Font Mono');
     }
     @font-face {
         font-family: 'Cascadia Mono';
-        src: local('ocrab');
+        src: local('Ocrab Nerd Font Mono');
     }
     @font-face {
         font-family: 'JetBrains Mono';
-        src: local('ocrab');
+        src: local('Ocrab Nerd Font Mono');
     }
     @font-face {
         font-family: 'Monospace';
-        src: local('ocrab');
+        src: local('Ocrab Nerd Font Mono');
     }
     @font-face {
         font-family: 'SF Mono';
-        src: local('ocrab');
+        src: local('Ocrab Nerd Font Mono');
     }
     @font-face {
         font-family: 'Monaco';
-        src: local('ocrab');
+        src: local('Ocrab Nerd Font Mono');
     }
     @font-face {
         font-family: 'Liberation Mono';
-        src: local('ocrab');
+        src: local('Ocrab Nerd Font Mono');
     }
     @font-face {
         font-family: 'Segoe UI Mono';
-        src: local('ocrab');
+        src: local('Ocrab Nerd Font Mono');
     }
     @font-face {
         font-family: 'Source Code Pro';
-        src: local('ocrab');
+        src: local('Ocrab Nerd Font Mono');
     }
     @font-face {
         font-family: 'Fira Code';
-        src: local('ocrab');
+        src: local('Ocrab Nerd Font Mono');
     }
     @font-face {
         font-family: 'Fira Mono';
-        src: local('ocrab');
+        src: local('Ocrab Nerd Font Mono');
     }
     @font-face {
         font-family: 'Roboto Mono';
-        src: local('ocrab');
+        src: local('Ocrab Nerd Font Mono');
     }
     @font-face {
         font-family: 'IBM Plex Mono';
-        src: local('ocrab');
+        src: local('Ocrab Nerd Font Mono');
     }
     @font-face {
         font-family: 'Ubuntu Mono';
-        src: local('ocrab');
+        src: local('Ocrab Nerd Font Mono');
     }
     @font-face {
         font-family: 'Ubuntu Monospace';
-        src: local('ocrab');
+        src: local('Ocrab Nerd Font Mono');
     }
     @font-face {
         font-family: 'Droid Sans Mono';
-        src: local('ocrab');
+        src: local('Ocrab Nerd Font Mono');
     }
     @font-face {
         font-family: 'Inconsolata';
-        src: local('ocrab');
+        src: local('Ocrab Nerd Font Mono');
     }
     @font-face {
         font-family: 'Hack';
-        src: local('ocrab');
+        src: local('Ocrab Nerd Font Mono');
     }
     @font-face {
         font-family: 'DejaVu Sans Mono';
-        src: local('ocrab');
+        src: local('Ocrab Nerd Font Mono');
     }
     @font-face {
         font-family: 'Noto Sans Mono';
-        src: local('ocrab');
+        src: local('Ocrab Nerd Font Mono');
     }
     @font-face {
         font-family: 'Courier New';
-        src: local('ocrab');
+        src: local('Ocrab Nerd Font Mono');
     }
     @font-face {
         font-family: 'Courier';
-        src: local('ocrab');
+        src: local('Ocrab Nerd Font Mono');
     }
     @font-face {
         font-family: 'Lucida Console';
-        src: local('ocrab');
+        src: local('Ocrab Nerd Font Mono');
     }
     @font-face {
         font-family: 'Andale Mono';
-        src: local('ocrab');
+        src: local('Ocrab Nerd Font Mono');
     }
     @font-face {
         font-family: 'Gitlab Mono';
-        src: local('ocrab');
+        src: local('Ocrab Nerd Font Mono');
     }
     @font-face {
         font-family: 'Gitlab Mono';
-        src: local('ocrab');
+        src: local('Ocrab Nerd Font Mono');
         font-weight: 600;
     }
     code, code *, pre, pre *,
@@ -127,6 +127,6 @@
     .markdown-area,
     .ProseMirror code,
     .cm-editor, .cm-editor * {
-        font-family: 'ocrab' !important;
+        font-family: 'Ocrab Nerd Font Mono' !important;
     }
 }
