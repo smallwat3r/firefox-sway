@@ -7,6 +7,9 @@ user_pref("browser.tabs.opentabfor.middleclick", false);
 // Auto-enable sideloaded extensions
 user_pref("extensions.autoDisableScopes", 0);
 
+// Override Fedora's distribution homepage
+user_pref("browser.startup.homepage", "https://duckduckgo.com");
+
 // Enable userChrome.css
 user_pref(
   "toolkit.legacyUserProfileCustomizations.stylesheets",
