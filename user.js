@@ -4,7 +4,8 @@ user_pref("browser.link.open_newwindow.restriction", 0);
 user_pref("browser.link.open_newwindow.override.external", 2);
 user_pref("browser.tabs.opentabfor.middleclick", false);
 
-// Auto-enable sideloaded extensions
+// Auto-enable sideloaded extensions. Trade-off: this enables
+// anything dropped into the profile, not just tabs-to-windows.
 user_pref("extensions.autoDisableScopes", 0);
 
 // Override Fedora's distribution homepage

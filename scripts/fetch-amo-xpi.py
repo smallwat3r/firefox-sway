@@ -32,7 +32,8 @@ def b64url(data):
 def make_jwt(key, secret):
     now = int(time.time())
     hdr = b64url(json.dumps({"alg": "HS256", "typ": "JWT"}).encode())
-    pay = b64url(json.dumps({"iss": key, "iat": now, "exp": now + 300}).encode())
+    claims = {"iss": key, "jti": os.urandom(8).hex(), "iat": now, "exp": now + 300}
+    pay = b64url(json.dumps(claims).encode())
     sig = hmac.new(secret.encode(), f"{hdr}.{pay}".encode(), hashlib.sha256).digest()
     return f"{hdr}.{pay}.{b64url(sig)}"
 

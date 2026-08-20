@@ -21,6 +21,7 @@ ff_profile_dir() {
     /^\[Install/ { f=1 }
     f && /^Default=/ { print $2; exit }
   ' "$ff_dir/profiles.ini")
+  [[ -n "$profile" ]] || die "No default profile found"
   echo "$ff_dir/$profile"
 }
 

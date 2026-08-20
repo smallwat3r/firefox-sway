@@ -20,6 +20,7 @@ list_bookmarks() {
     WITH RECURSIVE paths(id, path) AS (
       SELECT id, title FROM moz_bookmarks
       WHERE parent = 1 AND type = 2
+        AND guid != 'tags________'
       UNION ALL
       SELECT b.id, paths.path || '/' || b.title
       FROM moz_bookmarks b
@@ -41,4 +42,4 @@ target="$(list_bookmarks \
     --delimiter=$'\t' --with-nth=2..)" \
   || exit 0
 url="$(printf '%s' "$target" | cut -f1)"
-setsid firefox "$url" >/dev/null 2>&1
+setsid -f firefox "$url" >/dev/null 2>&1
