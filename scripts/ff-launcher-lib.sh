@@ -31,11 +31,12 @@ FZF_BIND+=",ctrl-right:forward-word"
 FZF_BIND+=",ctrl-bs:backward-kill-word"
 FZF_BIND+=",home:first,end:last"
 
-FZF_COLORS="bg:#222222,fg:#bbbbbb"
-FZF_COLORS+=",bg+:#005577,fg+:#eeeeee"
-FZF_COLORS+=",hl:#eeeeee,hl+:#eeeeee"
-FZF_COLORS+=",pointer:#eeeeee,prompt:#eeeeee"
-FZF_COLORS+=",info:#eeeeee,gutter:#222222"
+FZF_COLORS="bg:#c0c0c0,fg:#000000"
+FZF_COLORS+=",bg+:#000080,fg+:#ffffff"
+FZF_COLORS+=",hl:#000080:bold,hl+:#d4aa00"
+FZF_COLORS+=",pointer:#000000,prompt:#000000"
+FZF_COLORS+=",info:#000000,gutter:#c0c0c0"
+FZF_COLORS+=",query:#000000"
 
 FZF_OPTS=(
   --reverse --wrap --tiebreak=index
