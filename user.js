@@ -50,3 +50,13 @@ user_pref("browser.urlbar.shortcuts.history", false);
 user_pref("browser.urlbar.shortcuts.tabs", false);
 user_pref("browser.search.suggest.enabled", false);
 user_pref("browser.urlbar.speculativeConnect.enabled", false);
+
+// Memory. Every tab is a window, so Firefox never unloads tabs
+// here, rendering and the back-forward cache are the levers.
+// Hardware WebRender keeps window buffers on the GPU instead of
+// CPU shared memory (33 MB per 4K buffer, two or three per
+// window). Set to true if the DisplayLink (evdi) output glitches.
+user_pref("gfx.webrender.software", false);
+// Fully rendered pages kept alive for back navigation, default
+// scales with RAM (8 on this machine).
+user_pref("browser.sessionhistory.max_total_viewers", 2);
