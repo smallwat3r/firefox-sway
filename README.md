@@ -26,7 +26,7 @@ This is my personal setup. It should be safe for anyone to use, but
 
 - Hides the tab bar and bookmark bar with `userChrome.css`
 - Overrides common monospace fonts with a custom font
-  (`ocrab`) via `userContent.css`
+  (`MonacoB`) via `userContent.css`
 - Opens new tabs as windows via Firefox preferences (`user.js`)
 - Installs an extension (Tabs to Windows, source in
   `extensions/tabs-to-windows/`) that moves any tab created
